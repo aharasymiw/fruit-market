@@ -56,3 +56,40 @@ html {
   box-sizing: inherit;
 }
 /*End of Reset :)*/
+
+header {
+
+}
+
+body {
+	background-color: black;	
+}
+
+.wrapper{
+	width: 90%;
+	background-color: white;
+	margin: auto;
+}
+
+.title {
+	display: block;
+	text-align: center;
+	padding: 20px 0px 0px 0px;
+	font-family: 'Khula', sans-serif;
+	font-size: 34px;
+	border-bottom: solid black 4px;
+}
+
+.total-cash {
+	text-align: right;
+	display: block;
+	padding: 10px 7px 0px 0px;
+	font-family: Verdana, sans-serif;
+	font-size: 18px;
+	font-weight: 550;
+	color: crimson;
+}
+
+.cash {
+	color: black;
+}
