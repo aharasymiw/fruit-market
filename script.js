@@ -69,9 +69,10 @@ function priceStream(){
 		$('#banana > h3').append($('<span>').text((bananaPrice/100).toFixed(2)));
 		$('#grape span').first().remove();
 		$('#grape > h3').append($('<span>').text((grapePrice/100).toFixed(2)));
-	}, 15000)
+	}, 500)
 }
 
+// Updates store objects and DOM when a .sell button clicks
 function sell() {
   $('#apple').on('click', '.sell', function () {
     if (appleStore.num > 0) {
@@ -87,30 +88,30 @@ function sell() {
   });
 
   $('#banana').on('click', '.sell', function () {
-  if (bananaStore.num > 0) {
-    //bananaStore.avg = (bananaStore.num * bananaStore.avg - bananaPrice)/(bananaStore.num - 1);
-    bananaStore.num--;
-    totalCash += bananaPrice;
-    //$('#banana div span').first().html((bananaStore.avg/100).toFixed(2));
-    $('#banana div span').last().html(bananaStore.num);
-    $('header span').html((totalCash / 100).toFixed(2));
-  } else {
-    alert('You don\"t have enough bananas.');
-  }
+    if (bananaStore.num > 0) {
+      //bananaStore.avg = (bananaStore.num * bananaStore.avg - bananaPrice)/(bananaStore.num - 1);
+      bananaStore.num--;
+      totalCash += bananaPrice;
+      //$('#banana div span').first().html((bananaStore.avg/100).toFixed(2));
+      $('#banana div span').last().html(bananaStore.num);
+      $('header span').html((totalCash / 100).toFixed(2));
+    } else {
+      alert('You don\"t have enough bananas.');
+    }
   });
 
-    $('#orange').on('click', '.sell', function () {
-  if (orangeStore.num > 0) {
-    //orangeStore.avg = (orangeStore.num * orangeStore.avg - orangePrice)/(orangeStore.num - 1);
-    orangeStore.num--;
-    totalCash += orangePrice;
-    //$('#orange div span').first().html((orangeStore.avg/100).toFixed(2));
-    $('#orange div span').last().html(orangeStore.num);
-    $('header span').html((totalCash / 100).toFixed(2));
-  } else {
-    alert('You don\"t have enough oranges.');
-  }
-    });
+  $('#orange').on('click', '.sell', function () {
+    if (orangeStore.num > 0) {
+      //orangeStore.avg = (orangeStore.num * orangeStore.avg - orangePrice)/(orangeStore.num - 1);
+      orangeStore.num--;
+      totalCash += orangePrice;
+      //$('#orange div span').first().html((orangeStore.avg/100).toFixed(2));
+      $('#orange div span').last().html(orangeStore.num);
+      $('header span').html((totalCash / 100).toFixed(2));
+    } else {
+      alert('You don\"t have enough oranges.');
+    }
+  });
 
       $('#grape').on('click', '.sell', function () {
 
@@ -124,11 +125,10 @@ function sell() {
   } else {
     alert('You don\"t have enough grapes.');
   }
-      });
-
+});
 }
 
-// Updates store objects and DOM on button click
+// Updates store objects and DOM when a .buy button clicks
 function buy(){
 
   $('#apple').on('click', '.buy', function(){
@@ -144,7 +144,7 @@ function buy(){
     }
 	});
 
-  $('#banana').on('click', 'button', function(){
+  $('#banana').on('click', '.buy', function(){
     if (totalCash >= bananaPrice) {
       bananaStore.avg = (bananaStore.num * bananaStore.avg + bananaPrice)/(bananaStore.num + 1);
       bananaStore.num++;
@@ -158,7 +158,7 @@ function buy(){
     console.log(totalCash)
   });
 
-  $('#orange').on('click', 'button', function(){
+  $('#orange').on('click', '.buy', function(){
     if (totalCash >= orangePrice) {
       orangeStore.avg = (orangeStore.num * orangeStore.avg + orangePrice)/(orangeStore.num + 1);
       orangeStore.num++;
@@ -171,7 +171,7 @@ function buy(){
     }
   });
 
-  $('#grape').on('click', 'button', function(){
+  $('#grape').on('click', '.buy', function(){
     if (totalCash >= grapePrice) {
       grapeStore.avg = (grapeStore.num * grapeStore.avg + grapePrice)/(grapeStore.num + 1);
       grapeStore.num++;
