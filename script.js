@@ -1,26 +1,33 @@
-// Global price variables
+// Global price variables, initiated to a base price
 var applePrice = 500;
 var orangePrice = 500;
 var bananaPrice = 500;
 var grapePrice = 500;
 
+// Return a random number between min and max
+function randomNumber(min, max) {
+	return Math.floor(Math.random() * (1 + max - min) + min);
+}
+
 // Return a random number between -50 and 50
-function randomNumber() {
-	var value = Math.floor(Math.random() * 50 + 1);
-	if (Math.floor(Math.random() * 10 + 1) % 2 === 0){
-		return value;
+function randomPrice() {
+	var randomValue = 0;
+	 
+	 randomValue = randomNumber(0, 50);
+	if (randomNumber(1, 10) % 2 === 0){
+		return randomValue;
 	}else {
-		return -1 * value;
+		return -1 * randomValue;
 	}
 }
 
 // Update prices ever 15 seconds
 $(function(){
     setInterval(function(){
-		applePrice += randomNumber();
-		orangePrice += randomNumber();
-		bananaPrice += randomNumber();
-		grapePrice += randomNumber();
+		applePrice += randomPrice();
+		orangePrice += randomPrice();
+		bananaPrice += randomPrice();
+		grapePrice += randomPrice();
 		
 		if(applePrice < 50){applePrice = 50;}
 		if(applePrice > 999){applePrice = 999;}
