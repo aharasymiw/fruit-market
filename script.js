@@ -24,11 +24,14 @@ function randomPrice() {
 // Update prices ever 15 seconds
 $(function(){
     setInterval(function(){
+		
+		// Get a random price adjustment for the fruit
 		applePrice += randomPrice();
 		orangePrice += randomPrice();
 		bananaPrice += randomPrice();
 		grapePrice += randomPrice();
 		
+		// Update value of the global variable for the fruit's price
 		if(applePrice < 50){applePrice = 50;}
 		if(applePrice > 999){applePrice = 999;}
 		if(orangePrice < 50){orangePrice = 50;}
@@ -38,14 +41,15 @@ $(function(){
 		if(grapePrice < 50){grapePrice = 50;}
 		if(grapePrice > 999){grapePrice = 999;}		
 		
-		$('#apple  span').remove();
+		//Update current price of the fruit in the DOM
+		$('#apple span').first().remove();
 		$('#apple > h3').append($('<span>').text(applePrice));
-		$('#orange  span').remove();
+		$('#orange span').first().remove();
 		$('#orange > h3').append($('<span>').text(orangePrice));
-		$('#banana  span').remove();
+		$('#banana span').first().remove();
 		$('#banana > h3').append($('<span>').text(bananaPrice));
-		$('#grape  span').remove();
+		$('#grape span').first().remove();
 		$('#grape > h3').append($('<span>').text(grapePrice));
 		console.log(applePrice, orangePrice, bananaPrice, grapePrice);		
-    }, 15000)
+    }, 500)
 }); 
