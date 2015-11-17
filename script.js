@@ -24,6 +24,12 @@ function randomPrice() {
 // Update prices ever 15 seconds
 $(function(){
     setInterval(function(){
+
+		// Initialize empty string variables from 
+		var appleString = '';
+		var orangeString = '';
+		var bananaString = '';
+		var grapeString = '';
 		
 		// Get a random price adjustment for the fruit
 		applePrice += randomPrice();
@@ -41,15 +47,20 @@ $(function(){
 		if(grapePrice < 50){grapePrice = 50;}
 		if(grapePrice > 999){grapePrice = 999;}		
 		
+		// Convert the fruit's current price to a formated string for display
+		appleString = applePrice.toString().substring(0,1) + '.' + applePrice.toString().substring(1,3);
+		orangeString = orangePrice.toString().substring(0,1) + '.' + orangePrice.toString().substring(1,3);
+		bananaString = bananaPrice.toString().substring(0,1) + '.' + bananaPrice.toString().substring(1,3);
+		grapeString = grapePrice.toString().substring(0,1) + '.' + grapePrice.toString().substring(1,3);
+		
 		//Update current price of the fruit in the DOM
 		$('#apple span').first().remove();
-		$('#apple > h3').append($('<span>').text(applePrice));
+		$('#apple > h3').append($('<span>').text(appleString));
 		$('#orange span').first().remove();
-		$('#orange > h3').append($('<span>').text(orangePrice));
+		$('#orange > h3').append($('<span>').text(orangeString));
 		$('#banana span').first().remove();
-		$('#banana > h3').append($('<span>').text(bananaPrice));
+		$('#banana > h3').append($('<span>').text(bananaString));
 		$('#grape span').first().remove();
-		$('#grape > h3').append($('<span>').text(grapePrice));
-		console.log(applePrice, orangePrice, bananaPrice, grapePrice);		
+		$('#grape > h3').append($('<span>').text(grapeString));
     }, 500)
 }); 
