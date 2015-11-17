@@ -72,10 +72,66 @@ function priceStream(){
 	}, 15000)
 }
 
+function sell() {
+  $('#apple').on('click', '.sell', function () {
+    if (appleStore.num > 0) {
+      //appleStore.avg = (appleStore.num * appleStore.avg - applePrice)/(appleStore.num - 1);
+      appleStore.num--;
+      totalCash += applePrice;
+      //$('#apple div span').first().html((appleStore.avg/100).toFixed(2));
+      $('#apple div span').last().html(appleStore.num);
+      $('header span').html((totalCash / 100).toFixed(2));
+    } else {
+      alert('You don\"t have enough apples.');
+    }
+  });
+
+  $('#banana').on('click', '.sell', function () {
+  if (bananaStore.num > 0) {
+    //bananaStore.avg = (bananaStore.num * bananaStore.avg - bananaPrice)/(bananaStore.num - 1);
+    bananaStore.num--;
+    totalCash += bananaPrice;
+    //$('#banana div span').first().html((bananaStore.avg/100).toFixed(2));
+    $('#banana div span').last().html(bananaStore.num);
+    $('header span').html((totalCash / 100).toFixed(2));
+  } else {
+    alert('You don\"t have enough bananas.');
+  }
+  });
+
+    $('#orange').on('click', '.sell', function () {
+  if (orangeStore.num > 0) {
+    //orangeStore.avg = (orangeStore.num * orangeStore.avg - orangePrice)/(orangeStore.num - 1);
+    orangeStore.num--;
+    totalCash += orangePrice;
+    //$('#orange div span').first().html((orangeStore.avg/100).toFixed(2));
+    $('#orange div span').last().html(orangeStore.num);
+    $('header span').html((totalCash / 100).toFixed(2));
+  } else {
+    alert('You don\"t have enough oranges.');
+  }
+    });
+
+      $('#grape').on('click', '.sell', function () {
+
+  if (grapeStore.num > 0) {
+    //grapeStore.avg = (grapeStore.num * grapeStore.avg - grapePrice)/(grapeStore.num - 1);
+    grapeStore.num--;
+    totalCash += grapePrice;
+    //$('#grape div span').first().html((grapeStore.avg/100).toFixed(2));
+    $('#grape div span').last().html(grapeStore.num);
+    $('header span').html((totalCash / 100).toFixed(2));
+  } else {
+    alert('You don\"t have enough grapes.');
+  }
+      });
+
+}
+
 // Updates store objects and DOM on button click
 function buy(){
 
-  $('#apple').on('click', 'button', function(){
+  $('#apple').on('click', '.buy', function(){
     if (totalCash >= applePrice) {
       appleStore.avg = (appleStore.num * appleStore.avg + applePrice)/(appleStore.num + 1);
       appleStore.num++;
@@ -140,5 +196,6 @@ $(function(){
 
   // Listen for button clicks
   buy();
+  sell();
 }); 
 
