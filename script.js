@@ -69,11 +69,12 @@ function priceStream(){
 		$('#banana > h3').append($('<span>').text((bananaPrice/100).toFixed(2)));
 		$('#grape span').first().remove();
 		$('#grape > h3').append($('<span>').text((grapePrice/100).toFixed(2)));
-	}, 500)
+	}, 15000)
 }
 
+// Updates store objects and DOM on button click
 function buy(){
-	//Button buy functionality
+
   $('#apple').on('click', 'button', function(){
     if (totalCash >= applePrice) {
       appleStore.avg = (appleStore.num * appleStore.avg + applePrice)/(appleStore.num + 1);
@@ -130,10 +131,14 @@ function buy(){
 
 // Document ready wrapper
 $(function(){
+
+  // Initialize total cash displayed on DOM
   $('header span').html((totalCash/100).toFixed(2));
+
+  // Generate random price updates
 	priceStream();
 
+  // Listen for button clicks
   buy();
-	// Button?
 }); 
 
